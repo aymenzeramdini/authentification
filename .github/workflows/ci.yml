@@ -30,3 +30,11 @@ jobs:
 
       - name: Run unit tests
         run: mvn -B test
+
+      - name: Generate JaCoCo coverage report
+        run: mvn jacoco:report
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./target/site/jacoco/jacoco.xml
